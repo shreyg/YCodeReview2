@@ -1,0 +1,52 @@
+#Creating Tissue
+Tissue tissueNew Tissue1
+
+#Creating cell in tissue1 in location 0 0 0
+Tissue Tissue1 helperCellNew 0 0 0
+
+Cell Tissue1 0 0 0 membrane south antibodyStrengthIs 100
+Cell Tissue1 0 0 0 membrane north antibodyStrengthIs 100
+
+Cell Tissue1 0 0 0 cloneNew north
+Cell Tissue1 0 1 0 cloneNew north
+Cell Tissue1 0 2 0 cloneNew north
+Cell Tissue1 0 3 0 cloneNew north
+Cell Tissue1 0 4 0 cloneNew north
+
+Cell Tissue1 0 0 0 cloneNew south
+Cell Tissue1 0 -1 0 cloneNew south
+Cell Tissue1 0 -2 0 cloneNew south
+Cell Tissue1 0 -3 0 cloneNew south
+Cell Tissue1 0 -4 0 cloneNew south
+
+Tissue Tissue1 cloneCellsNew west
+Tissue Tissue1 cloneCellsNew west
+Tissue Tissue1 cloneCellsNew west
+Tissue Tissue1 cloneCellsNew west
+Tissue Tissue1 cloneCellsNew west
+
+Tissue Tissue1 cloneCellsNew east
+Tissue Tissue1 cloneCellsNew east
+Tissue Tissue1 cloneCellsNew east
+Tissue Tissue1 cloneCellsNew east
+Tissue Tissue1 cloneCellsNew east
+
+Tissue Tissue1 infectionStartLocationIs 5 5 0 east 100
+
+Tissue Tissue1 infectedCellsDel
+
+Tissue Tissue1 infectionStartLocationIs 0 3 0 west 100
+
+Tissue Tissue1 infectedCellsDel
+
+Tissue Tissue1 infectionStartLocationIs -5 -5 0 down 100
+
+Tissue Tissue1 infectedCellsDel
+
+Tissue Tissue1 infectionStartLocationIs -3 -3 0 east 100
+
+Tissue Tissue1 cloneCellsNew up
+
+Tissue Tissue1 infectionStartLocationIs 0 0 0 west 100
+
+Tissue Tissue1 infectedCellsDel

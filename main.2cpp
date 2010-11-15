@@ -1,0 +1,62 @@
+
+#include <fstream>
+#include <stdlib.h>
+#include <queue>
+#include "Tissue.h"
+using namespace std;
+
+class TissueReactor : public Tissue::Notifiee {
+public:
+   void onCellNew(Cell::Ptr) {
+      cout << "Got new cell." << endl;
+   }
+
+   static TissueReactor * TissueReactorIs(Tissue *t) {
+      TissueReactor *m = new TissueReactor(t);
+      return m;
+   }
+protected:
+   TissueReactor(Tissue *t) : Tissue::Notifiee() {
+      notifierIs(t);
+   }
+};
+
+int main(int argc, const char* argv[]) {
+   Cell::Coordinates coords = Cell::Coordinates();
+   Cell::Coordinates coords2 = Cell::Coordinates();
+   coords2.x = 5;
+   cout << "(coords == coords2) = " << (coords == coords2) << endl;
+   Tissue::Ptr tissue = Tissue::TissueNew("myTissue");
+
+   TissueReactor *m = TissueReactor::TissueReactorIs(tissue.ptr());
+
+   cout << "Adding two cells:" << endl;
+   tissue->cellIs(Cell::CellNew(coords, tissue.ptr(), Cell::tCell()));
+   tissue->cellIs(Cell::CellNew(coords2, tissue.ptr(), Cell::tCell()));
+   Cell::Ptr cell = tissue->cell(coords);
+   Cell::Ptr cell2 = tissue->cell(coords2);
+
+   cout << "Current cells in tissue " << tissue->name() << ":" << endl;
+   for (Tissue::CellIteratorConst i = tissue->cellIterConst(); i; ++i) {
+      cout << i->name() << endl;
+   }
+
+   tissue->cellDel(cell2->name());
+
+   cout << "Cells in tissue " << tissue->name() << " after deleting "
+        << cell2->name() << ":" << endl;
+   for (Tissue::CellIteratorConst i = tissue->cellIterConst(); i; ++i) {
+      cout << i->name() << endl;
+   }
+
+   cell->membraneNew("Membrane", CellMembrane::north());
+   CellMembrane::Ptr mem = cell->membrane(CellMembrane::north());
+
+   AntibodyStrength s = mem->antibodyStrength();
+   cout << "mem->antibodyStrength() = " << s << endl;
+   mem->antibodyStrengthIs(10);
+   s = mem->antibodyStrength();
+   cout << "Now mem->antibodyStrength() = " << s << endl;
+	getchar();
+   return 0;
+}

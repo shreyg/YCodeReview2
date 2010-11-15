@@ -1,0 +1,31 @@
+#Creating Tissue
+Tissue tissueNew Tissue1
+
+#Creating cell in tissue1 in location 0 0 0
+Tissue Tissue1 helperCellNew 0 0 0
+
+#Creating antibodies in south and north membranes of cell in 0 0 0
+Cell Tissue1 0 0 0 membrane south antibodyStrengthIs 100
+Cell Tissue1 0 0 0 membrane north antibodyStrengthIs 100
+
+#Create new cell north of root cell
+Tissue Tissue1 cytotoxicCellNew 0 1 0
+
+#Clone cell 0 1 0 to 0 2 0
+Cell Tissue1 0 1 0 cloneNew north
+
+#Clone cell 0 0 0 to 0 -1 0
+Cell Tissue1 0 0 0 cloneNew south
+
+#Now there are 4 cells. 0 -1 0 and 0 0 0 have antibodies of strength 100 on the north
+#and south membranes while 0 1 0 and 0 2 0 have antibodies of strength 100 on all
+#membranes.
+
+#All cells in Tissue1 should try to clone west
+Tissue Tissue1 cloneCellsNew west
+
+#Start an infection at cell 0 0 0 on the east membrane
+Tissue Tissue1 infectionStartLocationIs 0 0 0 east 100
+
+#Remove all infected cells from the Tissue
+Tissue Tissue1 infectedCellsDel

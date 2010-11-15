@@ -1,0 +1,34 @@
+#This file has 14 creates 14 cells
+#There is only a single opening for infection to enter at 0 0 0
+#The infection enters from there and succesfully infects all cells
+#with only a limited path possible !
+#Creating Tissue
+Tissue tissueNew Tissue1
+#Creating cell in tissue1 in location 0 0 0
+Tissue Tissue1 cytotoxicCellNew 0 0 0
+Cell Tissue1 0 0 0 membrane south antibodyStrengthIs 0
+Cell Tissue1 0 0 0 membrane north antibodyStrengthIs 0
+#Cloen In North
+Cell Tissue1 0 0 0 cloneNew north
+Cell Tissue1 0 1 0 cloneNew north
+Cell Tissue1 0 2 0 cloneNew north
+#Clone in South
+Cell Tissue1 0 0 0 cloneNew south
+Cell Tissue1 0 -1 0 cloneNew south
+Cell Tissue1 0 -2 0 cloneNew south
+Tissue Tissue1 cloneCellsNew west
+Cell Tissue1 0 -3 0 membrane south antibodyStrengthIs 100
+Cell Tissue1 0 -3 0 membrane west antibodyStrengthIs 0
+Cell Tissue1 0 3 0 membrane north antibodyStrengthIs 100
+Cell Tissue1 0 3 0 membrane west antibodyStrengthIs 0
+Cell Tissue1 -1 -3 0 membrane south antibodyStrengthIs 100
+Cell Tissue1 -1 -3 0 membrane east antibodyStrengthIs 0
+Cell Tissue1 -1 3 0 membrane north antibodyStrengthIs 100
+Cell Tissue1 -1 3 0 membrane east antibodyStrengthIs 0
+Cell Tissue1 0 0 0 membrane east antibodyStrengthIs 0
+Cell Tissue1 0 0 0 membrane west antibodyStrengthIs 0
+Cell Tissue1 0 0 0 membrane north antibodyStrengthIs 100
+Cell Tissue1 0 0 0 membrane south antibodyStrengthIs 100
+Cell Tissue1 -1 0 0 membrane east antibodyStrengthIs 0
+Tissue Tissue1 infectionStartLocationIs 0 0 0 east 100
+Tissue Tissue1 infectedCellsDel

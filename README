@@ -1,0 +1,8 @@
+user: shreyg
+05592125
+shreyg@stanford.edu
+
+The main.cpp file is the only file edited
+My.log is a self defined similuation with comments inside on its action
+The implementation assumes the parser gets valid input syntax(it does handle semantic issues like exceptions etc.) as mentioned
+Error/Exception messages are sent to stderr
